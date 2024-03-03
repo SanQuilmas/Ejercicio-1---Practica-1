@@ -32,6 +32,8 @@ class Perceptron():
 n_iter = input('Cuantas iteraciones?(10)\n')
 aprendizaje = input('Que taza de aprendizaje quiere?(0.1)\n')
 
+n_iter = int(n_iter)
+aprendizaje = float(aprendizaje)
 
 print("Cargando archivo de entrenamiento...")
 df = pd.read_csv('OR_trn.csv', header=None)
@@ -40,7 +42,7 @@ X = df.iloc[0:2000, [0,1]].values
 y = df.iloc[0:2000, 2].values
 y = np.where(y == -1, -1, 1)
 
-ppn = Perceptron(aprendizaje=0.1, n_iter=10) 
+ppn = Perceptron(aprendizaje, n_iter) 
 print("Entrenando...")
 ppn.fit(X, y) 
 
